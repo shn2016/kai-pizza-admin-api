@@ -1,0 +1,10 @@
+{
+    "name": "db",
+    "connector": "mongodb",
+    "url": "",
+    "host": "ds119606.mlab.com",
+    "port": 19606,
+    "user": "admin01",
+    "password": "admin01",
+    "database": "pizza-creator"
+}
