@@ -15,14 +15,19 @@ import {
   put,
   del,
   requestBody,
+  HttpErrors,
 } from '@loopback/rest';
-import {Order} from '../models';
-import {OrderRepository} from '../repositories';
+import { Order, Product, OrderCreation } from '../models';
+import {OrderRepository, ProductRepository, UserRepository } from '../repositories';
 
 export class OrderController {
   constructor(
     @repository(OrderRepository)
     public orderRepository : OrderRepository,
+    @repository(ProductRepository)
+    public productRepository: ProductRepository,
+    @repository(UserRepository)
+    public userRepository: UserRepository
   ) {}
 
   @post('/order', {
@@ -33,8 +38,23 @@ export class OrderController {
       },
     },
   })
-  async create(@requestBody() order: Order): Promise<Order> {
-    return await this.orderRepository.create(order);
+  async create(@requestBody() orderRequest: OrderCreation): Promise<Order> {
+    let newOrder = new Order();
+
+    let customer = await this.userRepository.findById(orderRequest.userName);
+    if (!customer) {
+      throw new HttpErrors.BadRequest("customer not found");
+    }
+    newOrder.userName = orderRequest.userName;
+    newOrder.orderItems = Object.assign([], orderRequest.orderItems);
+    for (let orderItem of newOrder.orderItems) {
+      let foundProduct = await this.productRepository.findById(orderItem.productId);
+      orderItem.productName = foundProduct.name;
+      orderItem.price = foundProduct.price;
+    }
+    newOrder.status = "ordered";
+    return this.orderRepository.create(newOrder);
+    //return await this.orderRepository.create(order);
   }
 
   @get('/order/count', {

@@ -15,6 +15,11 @@ export class OrderItem extends Entity {
   orderId: number;
 
   @property({
+    type: 'string',
+  })
+  productName?: string;
+
+  @property({
     type: 'number',
     required: true,
   })
@@ -23,7 +28,7 @@ export class OrderItem extends Entity {
   @property({
     type: 'number',
   })
-  oderItemPrice?: number;
+  price?: number;
 
 
   constructor(data?: Partial<OrderItem>) {

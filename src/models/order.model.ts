@@ -1,4 +1,5 @@
 import {Entity, model, property} from '@loopback/repository';
+import { OrderItem } from './order-item.model';
 
 @model()
 export class Order extends Entity {
@@ -9,10 +10,10 @@ export class Order extends Entity {
   id?: number;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  userId: number;
+  userName: string;
 
   @property({
     type: 'string',
@@ -20,12 +21,10 @@ export class Order extends Entity {
   })
   status: string;
 
-  @property({
-    type: 'array',
-    itemType: 'object',
-    required: true,
+  @property.array(OrderItem, {
+    name: 'orderItems'
   })
-  orderItems: object[];
+  orderItems: OrderItem[];
 
 
   constructor(data?: Partial<Order>) {
