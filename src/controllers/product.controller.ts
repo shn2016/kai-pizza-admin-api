@@ -92,7 +92,7 @@ export class ProductController {
       },
     },
   })
-  async findById(@param.path.number('id') id: number): Promise<Product> {
+  async findById(@param.path.number('id') id: string): Promise<Product> {
     return await this.productRepository.findById(id);
   }
 
@@ -104,7 +104,7 @@ export class ProductController {
     },
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.number('id') id: string,
     @requestBody() product: Product,
   ): Promise<void> {
     await this.productRepository.updateById(id, product);
@@ -118,7 +118,7 @@ export class ProductController {
     },
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.number('id') id: string,
     @requestBody() product: Product,
   ): Promise<void> {
     await this.productRepository.replaceById(id, product);
@@ -131,7 +131,7 @@ export class ProductController {
       },
     },
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.number('id') id: string): Promise<void> {
     await this.productRepository.deleteById(id);
   }
 }

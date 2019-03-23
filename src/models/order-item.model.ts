@@ -3,10 +3,10 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class OrderItem extends Entity {
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  productId: number;
+  productId: string;
 
   @property({
     type: 'number',
