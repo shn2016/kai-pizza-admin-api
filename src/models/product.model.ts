@@ -2,8 +2,16 @@ import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class Product extends Entity {
+
+  constructor(data?: Partial<Product>) {
+    super(data);
+    if (data != null && typeof data === 'object') {
+      Object.assign(this, data);
+    }
+  }
+
   @property({
-    type: 'string',
+    name: 'id',
     id: true,
   })
   id?: string;
@@ -32,8 +40,4 @@ export class Product extends Entity {
   })
   price: number;
 
-
-  constructor(data?: Partial<Product>) {
-    super(data);
-  }
 }

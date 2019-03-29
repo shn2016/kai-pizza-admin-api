@@ -16,8 +16,8 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {Product} from '../models';
-import {ProductRepository} from '../repositories';
+import { Product } from '../models';
+import { ProductRepository } from '../repositories';
 
 export class ProductController {
   constructor(
@@ -92,7 +92,7 @@ export class ProductController {
       },
     },
   })
-  async findById(@param.path.number('id') id: string): Promise<Product> {
+  async findById(@param.path.string('id') id: string): Promise<Product> {
     return await this.productRepository.findById(id);
   }
 
@@ -104,7 +104,7 @@ export class ProductController {
     },
   })
   async updateById(
-    @param.path.number('id') id: string,
+    @param.path.string('id') id: string,
     @requestBody() product: Product,
   ): Promise<void> {
     await this.productRepository.updateById(id, product);
@@ -118,7 +118,7 @@ export class ProductController {
     },
   })
   async replaceById(
-    @param.path.number('id') id: string,
+    @param.path.string('id') id: string,
     @requestBody() product: Product,
   ): Promise<void> {
     await this.productRepository.replaceById(id, product);
@@ -131,7 +131,7 @@ export class ProductController {
       },
     },
   })
-  async deleteById(@param.path.number('id') id: string): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.productRepository.deleteById(id);
   }
 }
