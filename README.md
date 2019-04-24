@@ -3,10 +3,20 @@
 [![LoopBack](https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
 
 
-# Introduction
+## Introduction
+There are four parts:
+* [`Landing page`](https://github.com/shn2016/pizza-ordering-system/tree/master/landing-page) for demonstration.
+* `Pizza creator` implemented by 3 ways:
+  * Imperative Programming: [github](https://github.com/shn2016/pizza-ordering-system/tree/master/pizza-creator/Imperative%20Programming)
+  * Declarative Programming(React like): [github](https://github.com/shn2016/pizza-ordering-system/tree/master/pizza-creator/Declarative%20Programming)
+  * React: [github](https://github.com/shn2016/react-pizza-creator) , [`demo`](https://shn2016.github.io/react-pizza-creator/)
+* `Pizza admin system`(pizza-admin-system/): [github](https://github.com/shn2016/pizza-creator-admin/) ,   [`demo`](https://shn2016.github.io/pizza-creator-admin/)
+* `Backend`: to provide API.  [github](https://github.com/shn2016/kai-pizza-admin-api) ,  [`demo`](https://pizza-admin-api.herokuapp.com/explorer/)
 
-* This project is the backend of [pizza order system](https://github.com/shn2016/pizza-ordering-system).
-* The api is deployed at [Heroku](https://pizza-admin-api.herokuapp.com/explorer/).
+Click these websites to go to the live demo of pizza creator project. They are all deployed on `github pages` and 'heroku'.
+
+***Notice***: as I used free plan, the link may take a short time to load as they are cold loading ( sleep )
+
 
 # Installation
 
